@@ -5,3 +5,12 @@ repos:
       - id: black
         language_version: python3.11.5
         stages: [commit]
+  - repo: local 
+    hooks:
+        - id: pytest
+          name: pytest
+          language: system
+          always_run: true
+          entry: pytest -v -s
+          pass_filenames: false
+          stages: [commit]
