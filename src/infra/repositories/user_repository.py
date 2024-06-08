@@ -1,19 +1,18 @@
-from collections import namedtuple
+from src.domain.models import Users
 from src.infra.config import BDConnectionHandler
-from src.infra.entities import Users
+from src.infra.entities import Users as UsersModel
 
 
 class UserRepository:
     @classmethod
     def insertUser(cls, name: str, password: str) -> Users:
-        insertData = namedtuple("Users", "id name, password")
         with BDConnectionHandler() as connection:
             try:
-                newUser = Users(name=name, password=password)
+                newUser = UsersModel(name=name, password=password)
                 connection.session.add(newUser)
                 connection.session.commit()
 
-                return insertData(newUser.id, newUser.name, newUser.password)
+                return Users(newUser.id, newUser.name, newUser.password)
             except:
                 connection.session.rollback()
                 raise
