@@ -13,7 +13,7 @@ class AnimalType(enum.Enum):
 class Pets(Base):
     __tablename__ = "pets"
 
-    id = Column(Integer, autoincrement=True, primary_key=True)
+    id = Column(Integer, primary_key=True)
     name = Column(String(20), nullable=False, unique=True)
     specie = Column(Enum(AnimalType), nullable=False)
     age = Column(Integer, nullable=True)
@@ -22,4 +22,13 @@ class Pets(Base):
     def __rep__(self):
         return (
             f"Pet: [pet = {self.pet}, specie = {self.specie} and userId: {self.userId}]"
+        )
+
+    def __eq__(self, other):
+        return (
+            self.id == other.id
+            and self.name == other.name
+            and self.specie == other.specie
+            and self.age == other.age
+            and self.userId == other.userId
         )
