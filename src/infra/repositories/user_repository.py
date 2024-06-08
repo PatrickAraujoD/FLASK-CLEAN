@@ -1,10 +1,11 @@
 from typing import List
 from src.domain.models import Users
+from src.data.interfaces import UsersRepositoryInterface
 from src.infra.config import BDConnectionHandler
 from src.infra.entities import Users as UsersModel
 
 
-class UserRepository:
+class UserRepository(UsersRepositoryInterface):
     @classmethod
     def insertUser(cls, name: str, password: str) -> Users:
         with BDConnectionHandler() as connection:
