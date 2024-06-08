@@ -25,10 +25,12 @@ class Pets(Base):
         )
 
     def __eq__(self, other):
-        return (
-            self.id == other.id
-            and self.name == other.name
-            and self.specie == other.specie
-            and self.age == other.age
-            and self.userId == other.userId
-        )
+        if isinstance(other, Pets):
+            return (
+                self.id == other.id
+                and self.name == other.name
+                and self.specie == other.specie
+                and self.age == other.age
+                and self.userId == other.userId
+            )
+        return False
