@@ -49,7 +49,7 @@ def testSelectUser():
     queryUser = userRepository.selectUser(userId=userId)
     queryUser2 = userRepository.selectUser(name=name)
     queryUser3 = userRepository.selectUser(userId=userId, name=name)
-    print(data in queryUser)
+
     assert data in queryUser
     assert data in queryUser2
     assert data in queryUser3
