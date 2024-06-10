@@ -16,7 +16,7 @@ class UsersRepositorySpy(UsersRepositoryInterface):
         return mockUser()
 
     def selectUser(self, userId: int = None, name: str = None) -> List[Users]:
-        self.selectUser["userId"] = userId
-        self.selectUser["name"] = name
+        self.selectUserParams["userId"] = userId
+        self.selectUserParams["name"] = name
 
         return [mockUser()]
