@@ -3,7 +3,7 @@ repos:
     rev: 23.1.0
     hooks:
       - id: black
-        language_version: python3.11.5
+        language_version: python3.12.3
         stages: [commit]
   - repo: local 
     hooks:
