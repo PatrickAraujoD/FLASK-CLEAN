@@ -1,1 +1,2 @@
 from .user_repository_spy import UsersRepositorySpy
+from .pet_repository_spy import PetRepositorySpy
